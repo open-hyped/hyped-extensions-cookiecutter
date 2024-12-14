@@ -6,12 +6,9 @@
 from typing import TYPE_CHECKING
 
 # list all imports
-__all__ = [
-    "DummyProcessor"
-]
+__all__ = ["DummyProcessor"]
 
 if TYPE_CHECKING:  # pragma: not covered
-
     # standard imports for static type checkers, linting and auto-completion
     # add your normal imports here
     from .nodes.dummy import DummyProcessor
