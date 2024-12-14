@@ -29,9 +29,10 @@ docs = ["sphinx", "sphinx_rtd_theme"]
 requires = ["setuptools >= 61.0.0", "setuptools_scm>=8.0.0"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-packages = ["hyped.extensions.{{ cookiecutter.slug }}"]
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["hyped.extensions.*"]
+namespaces = true
 
 [tool.coverage.run]
 concurrency = ["multiprocessing","thread"]
