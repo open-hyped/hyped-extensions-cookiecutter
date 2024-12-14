@@ -1,4 +1,4 @@
-"""{{ cookiecutter.name }}
+"""Hyped {{ cookiecutter.extension_name }} Extension
 
 {{ cookiecutter.description }}
 """
@@ -20,7 +20,7 @@ else:
 
     # lazy imports
     _lazy_imports = {
-        "DummyProcessor": "hyped.extensions.{{ cookiecutter.slug }}.nodes.dummy",
+        "DummyProcessor": "hyped.extensions.{{ cookiecutter.extension_slug }}.nodes.dummy",
     }
 
     sys.modules[__name__] = LazyModule(

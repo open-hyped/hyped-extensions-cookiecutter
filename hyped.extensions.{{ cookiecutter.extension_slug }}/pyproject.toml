@@ -1,5 +1,5 @@
 [project]
-name = "hyped-{{ cookiecutter.pypi_name }}"
+name = "{{ cookiecutter.pypi_extension_name }}"
 dynamic = ["version"]
 description = "{{ cookiecutter.description }}"
 readme = "README.md"
@@ -42,7 +42,7 @@ data_file = "/tmp/.coverage"
 
 [tool.coverage.report]
 ignore_errors = true
-omit = ["tests/*", "src/hyped/extensions/{{ cookiecutter.slug }}/__version__.py"]
+omit = ["tests/*", "src/hyped/extensions/{{ cookiecutter.extension_slug }}/__version__.py"]
 # Regexes for lines to exclude from consideration
 exclude_also = [
     # Don't complain about missing debug-only code:
@@ -67,7 +67,7 @@ exclude_also = [
 
 
 [tool.setuptools_scm]
-version_file = "src/hyped/extensions/{{ cookiecutter.slug }}/__version__.py"
+version_file = "src/hyped/extensions/{{ cookiecutter.extension_slug }}/__version__.py"
 
 [tool.black]
 target-version = ["py310"]

@@ -1,7 +1,7 @@
 {
-    "name": "My Extension",
-    "slug": "{{ cookiecutter.name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
-    "pypi_name": "{{ cookiecutter.slug.replace('_', '-') }}",
+    "extension_name": "My Extension",
+    "extension_slug": "{{ cookiecutter.extension_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
+    "pypi_extension_name": "hyped-extension-{{ cookiecutter.extension_slug.replace('_', '-') }}",
     "description": null,
     "author": "open-hyped",
     "min_hyped_version": "0.1.0"
