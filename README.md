@@ -6,7 +6,7 @@ A **Cookiecutter template** for creating `hyped` extensions. Extensions are opti
 
 - **Organized Structure**: Creates a modular, maintainable package structure.
 - **Documentation Ready**: Includes placeholders for project documentation (coming soon).
-- **Testing Framework**: Prepares a folder for unit tests (coming soon).
+- **Testing Framework**: Prepares a folder for unit tests.
 - **CI/CD Support**: Adds GitHub Actions workflows for automation (coming soon).
 
 ## Creating an extension repository
@@ -24,18 +24,20 @@ A directory of the following structure will be generated in the current director
 
 ```python
 hyped.extensions.<NAME>
-├── README.md                    # Description of your extension
-├── pyproject.toml               # Build system and dependency management
-├── src/hyped/extensions/<NAME>  # Your extension package
-│   ├── __init__.py              # Initializes the package
-│   ├── nodes                    # Directory for hyped nodes
-│   │   ├── __init__.py          # Initializes the nodes module
-│   │   └── dummy.py             # Example node implementation
-│   └── ops                      # Directory for high-level operations
-│       ├── __init__.py          # Initializes the operations module
-├── docs/                        # Documentation folder (coming soon)
-├── tests/                       # Unit test folder (coming soon)
-└── .github/workflows/           # GitHub Actions workflows (coming soon)
+├── README.md                      # Description of your extension
+├── pyproject.toml                 # Build system and dependency management
+├── src/hyped/extensions/<NAME>    # Your extension package
+│   ├── __init__.py                # Initializes the package
+│   ├── nodes                      # Directory for hyped nodes
+│   │   ├── __init__.py            # Initializes the nodes module
+│   │   └── dummy.py               # Example processor implementation
+│   └── ops                        # Directory for high-level operations
+│       ├── __init__.py            # Initializes the operations module
+├── docs/                          # Documentation folder (coming soon)
+├── tests/hyped/extensions/<NAME>  # Unit tests for the extension
+│   ├── __init__.py                # Initializes the test module
+│   ├── test_dummy.py              # Tests for the example processor implementation
+└── .github/workflows/             # GitHub Actions workflows (coming soon)
 
 ```
 
