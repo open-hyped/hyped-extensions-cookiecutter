@@ -1,6 +1,6 @@
-from hyped.extensions.{{ cookiecutter.extension_slug }} import DummyProcessor
 from hyped.core.testing.processor import BaseDataProcessorTest
 from hyped.core.typing import Int
+from hyped.extensions.{{cookiecutter.extension_slug}} import DummyProcessor
 
 
 class TestInvert(BaseDataProcessorTest):
