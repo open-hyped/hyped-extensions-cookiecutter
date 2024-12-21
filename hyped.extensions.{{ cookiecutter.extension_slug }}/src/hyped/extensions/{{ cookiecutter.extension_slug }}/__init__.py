@@ -4,6 +4,7 @@
 """
 
 from typing import TYPE_CHECKING
+from .__version__ import __version__, __version_tuple__
 
 # list all imports
 __all__ = ["DummyProcessor"]
@@ -30,3 +31,5 @@ else:
         __spec__,
         lazy_imports=_lazy_imports,
     )
+    sys.modules[__name__].__version__ = __version__
+    sys.modules[__name__].__version_tuple__ = __version_tuple__

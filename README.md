@@ -5,7 +5,7 @@ A **Cookiecutter template** for creating `hyped` extensions. Extensions are opti
 ## Features
 
 - **Organized Structure**: Creates a modular, maintainable package structure.
-- **Documentation Ready**: Includes placeholders for project documentation (coming soon).
+- **Documentation Ready**: Includes basix setup for sphinx-style project documentation.
 - **Testing Framework**: Prepares a folder for unit tests.
 - **CI/CD Support**: Adds GitHub Actions workflows for automation (coming soon).
 
@@ -32,13 +32,14 @@ hyped.extensions.<NAME>
 │   │   ├── __init__.py            # Initializes the nodes module
 │   │   └── dummy.py               # Example processor implementation
 │   └── ops                        # Directory for high-level operations
-│       ├── __init__.py            # Initializes the operations module
-├── docs/                          # Documentation folder (coming soon)
+│       └── __init__.py            # Initializes the operations module
+├── docs/                          # Basic Sphinx documentation setup
+│   ├── build.sh                   # Builds the documentation
+│   └── source/                    # Sphinx source directory
 ├── tests/hyped/extensions/<NAME>  # Unit tests for the extension
 │   ├── __init__.py                # Initializes the test module
-│   ├── test_dummy.py              # Tests for the example processor implementation
+│   └── test_dummy.py              # Tests for the example processor
 └── .github/workflows/             # GitHub Actions workflows (coming soon)
-
 ```
 
 **Note**: The `src/hyped/extensions` directory is part of the `hyped.extensions` namespace. Do not add any files or folders directly in `src/hyped/extensions` (i.e., outside `<NAME>`). Doing so would break the namespace and could lead to import errors.
