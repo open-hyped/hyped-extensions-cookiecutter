@@ -54,7 +54,7 @@ Instead, ensure all your extension's code is contained entirely within the `src/
 
 Follow these steps to configure the GitHub repository:
 
-### Create a GitHub Repository
+### 1. Create a GitHub Repository
 
 Initialize the repository without a `README.md` or `.gitignore`, as these are already included in the template.
 
@@ -64,7 +64,7 @@ After creating a GitHub repository, link it to your local project directory as t
 git remote add origin <your-repo-url>
 ```
 
-### Configuring Secrets
+### 2. Configuring Secrets
 
 GitHub Actions workflows included in the template require specific secrets to enable full functionality. These secrets can be configured on GitHub under **Settings > Secrets and Variables > Actions**.
 
@@ -84,7 +84,7 @@ Depending on the workflows you plan to use, add the following secrets:
 
 **Note**: If you don’t intend to use Coveralls, TestPyPI, or PyPI, you can skip setting up the respective secrets and modify or disable the workflows that depend on them.
 
-### Setting up GitHub Pages
+### 3. Setting up GitHub Pages
 
 The `docs.yml` workflow automatically builds and publishes documentation to GitHub Pages. To enable this functionality, follow these steps:
 
