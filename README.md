@@ -27,19 +27,13 @@ hyped.extensions.<NAME>
 ├── README.md                      # Description of your extension
 ├── pyproject.toml                 # Build system and dependency management
 ├── src/hyped/extensions/<NAME>    # Your extension package
-│   ├── __init__.py                # Initializes the package
 │   ├── nodes                      # Directory for hyped nodes
-│   │   ├── __init__.py            # Initializes the nodes module
-│   │   └── dummy.py               # Example processor implementation
 │   └── ops                        # Directory for high-level operations
-│       └── __init__.py            # Initializes the operations module
 ├── docs/                          # Basic Sphinx documentation setup
-│   ├── build.sh                   # Builds the documentation
+│   ├── build.sh                   # Builds the documentation locally
 │   └── source/                    # Sphinx source directory
 ├── tests/hyped/extensions/<NAME>  # Unit tests for the extension
-│   ├── __init__.py                # Initializes the test module
-│   └── test_dummy.py              # Tests for the example processor
-└── .github/workflows/             # GitHub Actions workflows (coming soon)
+└── .github/workflows/             # GitHub Actions workflows
 ```
 
 **Note**: The `src/hyped/extensions` directory is part of the `hyped.extensions` namespace. Do not add any files or folders directly in `src/hyped/extensions` (i.e., outside `<NAME>`). Doing so would break the namespace and could lead to import errors.
@@ -56,7 +50,51 @@ src/hyped/extensions/
 Instead, ensure all your extension's code is contained entirely within the `src/hyped/extensions/<NAME>` folder.
 
 
-## Namespace Behavior
+# Setting up a GitHub Repository
+
+Follow these steps to configure the GitHub repository:
+
+### Create a GitHub Repository
+
+Initialize the repository without a `README.md` or `.gitignore`, as these are already included in the template.
+
+After creating a GitHub repository, link it to your local project directory as the remote repository:
+
+```bash
+git remote add origin <your-repo-url>
+```
+
+### Configuring Secrets
+
+GitHub Actions workflows included in the template require specific secrets to enable full functionality. These secrets can be configured on GitHub under **Settings > Secrets and Variables > Actions**.
+
+Depending on the workflows you plan to use, add the following secrets:
+
+- `COVERALLS_REPO_TOKEN`:
+
+    Used in the `tests.yml` workflow to push coverage reports to Coveralls. To obtain this token, follow the instructions in the [Coveralls documentation](https://docs.coveralls.io/#integrate-coveralls-with-your-codebase).
+
+- `TEST_PYPI_API_TOKEN`:
+
+    Required by the `publish.yml` workflow to upload the package to TestPyPI for testing. Generate this token from your TestPyPI account settings under **Account Settings > API tokens**.
+
+- `PYPI_API_TOKEN`:
+
+    Required by the `publish.yml` workflow to upload the package to PyPI. Generate this token from your PyPI account settings under **Account Settings > API tokens**.
+
+**Note**: If you don’t intend to use Coveralls, TestPyPI, or PyPI, you can skip setting up the respective secrets and modify or disable the workflows that depend on them.
+
+### Setting up GitHub Pages
+
+The `docs.yml` workflow automatically builds and publishes documentation to GitHub Pages. To enable this functionality, follow these steps:
+
+- Go to your repository on GitHub.
+- Navigate to **Settings > Pages**.
+- Under **Source**, select **Deploy from a branch**.
+- In the Branch dropdown, choose `gh-pages` and click **Save**.
+
+
+## Python Namespace Behavior
 
 The hyped.extensions namespace relies on a shared structure between the core hyped package and any installed extensions. Python’s namespace packages have specific rules for handling modules across multiple installations, which can lead to unexpected issues if these rules are not followed.
 

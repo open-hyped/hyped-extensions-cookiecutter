@@ -4,5 +4,9 @@
     "pypi_extension_name": "hyped-extension-{{ cookiecutter.extension_slug.replace('_', '-') }}",
     "description": null,
     "author": "open-hyped",
-    "min_hyped_version": "0.1.0"
+    "min_hyped_version": "0.1.0",
+
+    "_copy_without_render": [
+        ".github/workflows/tests.yml"
+    ]
 }
