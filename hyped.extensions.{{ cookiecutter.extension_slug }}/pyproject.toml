@@ -23,7 +23,7 @@ tests = [
     "pytest",
     "pytest-cov",
 ]
-docs = ["sphinx", "sphinx_rtd_theme"]
+docs = ["sphinx", "furo"]
 
 [build-system]
 requires = ["setuptools >= 61.0.0", "setuptools_scm>=8.0.0"]
