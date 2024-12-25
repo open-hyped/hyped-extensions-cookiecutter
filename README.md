@@ -50,7 +50,7 @@ src/hyped/extensions/
 Instead, ensure all your extension's code is contained entirely within the `src/hyped/extensions/<NAME>` folder.
 
 
-# Setting up a GitHub Repository
+## Setting up a GitHub Repository
 
 Follow these steps to configure the GitHub repository:
 
