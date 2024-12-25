@@ -64,34 +64,51 @@ After creating a GitHub repository, link it to your local project directory as t
 git remote add origin <your-repo-url>
 ```
 
-### 2. Configuring Secrets
+### 2. Configuring GitHub Actions
 
-GitHub Actions workflows included in the template require specific secrets to enable full functionality. These secrets can be configured on GitHub under **Settings > Secrets and Variables > Actions**.
+To enable full functionality of the GitHub Actions workflows included in this template, some configuration is required. Follow the steps below to set up the necessary components.
 
-Depending on the workflows you plan to use, add the following secrets:
+#### 2.1. Coveralls Integation
 
-- `COVERALLS_REPO_TOKEN`:
+If you want to track test coverage and push coverage reports to [coveralls.io](https://coveralls.io), you’ll need to configure the `COVERALLS_REPO_TOKEN` secret on the GitHub Repository under **Settings > Secrets and Variables > Actions**. To obtain the token, follow the instructions [here](https://docs.coveralls.io/#integrate-coveralls-with-your-codebase).
 
-    Used in the `tests.yml` workflow to push coverage reports to Coveralls. To obtain this token, follow the instructions in the [Coveralls documentation](https://docs.coveralls.io/#integrate-coveralls-with-your-codebase).
+#### 2.2. PyPI Configuration (Trusted Publisher)
 
-- `TEST_PYPI_API_TOKEN`:
+To enable the publish.yml workflow to upload your package to PyPI, you need to register GitHub as a trusted publisher. Log in to your **PyPI account** and navigate to the **Publishing** section. Enter the requested details about your package and repository to register GitHub as a **trusted publisher**. Follow the instructions provided on PyPI to complete the registration. Once this is done, the GitHub Actions workflow will be able to securely upload your package to PyPI.
 
-    Required by the `publish.yml` workflow to upload the package to TestPyPI for testing. Generate this token from your TestPyPI account settings under **Account Settings > API tokens**.
+**Note: The Environment name needs to be "pypi".**
 
-- `PYPI_API_TOKEN`:
+#### 2.3 TestPyPI Configuration
 
-    Required by the `publish.yml` workflow to upload the package to PyPI. Generate this token from your PyPI account settings under **Account Settings > API tokens**.
+The process **TestPyPI** is identical, except you'll need to use your [TestPyPI account](https://test.pypi.org) instead.
 
-**Note**: If you don’t intend to use Coveralls, TestPyPI, or PyPI, you can skip setting up the respective secrets and modify or disable the workflows that depend on them.
 
 ### 3. Setting up GitHub Pages
 
 The `docs.yml` workflow automatically builds and publishes documentation to GitHub Pages. To enable this functionality, follow these steps:
 
-- Go to your repository on GitHub.
-- Navigate to **Settings > Pages**.
-- Under **Source**, select **Deploy from a branch**.
-- In the Branch dropdown, choose `gh-pages` and click **Save**.
+1. Go to your repository on GitHub.
+2. Navigate to **Settings > Pages**.
+3. Under **Source**, select **Deploy from a branch**.
+4. In the Branch dropdown, choose `gh-pages` and click **Save**.
+
+
+## Publishing a Release
+
+This template includes an automated workflow to handle the process of publishing a release to both **PyPI** and **GitHub**. Whenever you push a commit to the `main` branch, the workflow is tested by publishing the distribution to **TestPyPI**. When you create a tag with a valid version format (e.g., v1.2.3), the release workflow will be triggered to publish the release to both **PyPI** and **GitHub**.
+
+To create a version release, run the following git commands:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+Once the tag is pushed to GitHub, the workflow will trigger automatically:
+
+- **Publish to TestPyPI**: First, the workflow will test the publishing process by pushing the release to TestPyPI.
+- **Publish to PyPI**: If everything goes smoothly on TestPyPI, the workflow will proceed to publish the release to PyPI.
+- **GitHub Release**: Lastly, the workflow will sign the distribution and upload it as a GitHub Release.
 
 
 ## Python Namespace Behavior
