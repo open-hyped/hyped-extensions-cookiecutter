@@ -147,8 +147,8 @@ tags
 **/*.lock
 
 # ignore prototype scripts
-/proto*.py
-/proto*.ipynb
+**/proto*.py
+**/proto*.ipynb
 
 /typesystem.xml
 /Typesystem.xml
