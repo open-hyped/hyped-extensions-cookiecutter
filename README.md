@@ -17,7 +17,7 @@ Here’s how to create an extension:
 # install cookiecutter
 pip install cookiecutter
 # create repository from template
-cookiecutter gh:open-hyped/hyped/extensions/cookiecutter
+cookiecutter gh:open-hyped/hyped-extensions-cookiecutter
 ```
 
 A directory of the following structure will be generated in the current directory:
